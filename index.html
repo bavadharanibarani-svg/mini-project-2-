@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Flow</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f3f4f6;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    .box {
+        background-color: #ffffff;
+        padding: 30px;
+        width: 320px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        text-align: center;
+        display: none;
+    }
+
+    .box.active {
+        display: block;
+    }
+
+    input {
+        width: 90%;
+        padding: 8px;
+        margin: 8px 0;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    button {
+        width: 95%;
+        padding: 10px;
+        background-color: #2563eb;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    .logout-btn {
+        background-color: #dc2626;
+    }
+
+    h1, h2 {
+        color: #333;
+    }
+
+    p {
+        color: #555;
+    }
+</style>
+</head>
+
+<body>
+
+<!-- SIGNUP PAGE -->
+<div class="box active" id="signup">
+    <h2>User Signup</h2>
+    <form onsubmit="showWelcome(event)">
+        <input type="text" placeholder="Full Name" required>
+        <input type="email" placeholder="Email Address" required>
+        <input type="password" placeholder="Password" required>
+        <input type="password" placeholder="Confirm Password" required>
+        <button type="submit">Sign Up</button>
+    </form>
+</div>
+
+<!-- WELCOME PAGE -->
+<div class="box" id="welcome">
+    <h1>Welcome!</h1>
+    <p>Welcome to our website! We’re happy to have you here.</p>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+</div>
+
+<!-- THANK YOU PAGE -->
+<div class="box" id="thankyou">
+    <h1>Thank You!</h1>
+    <p>Thank you for visiting our website. We appreciate your time.</p>
+</div>
+
+<script>
+    function showWelcome(event) {
+        event.preventDefault();
+        document.getElementById("signup").classList.remove("active");
+        document.getElementById("welcome").classList.add("active");
+    }
+
+    function logout() {
+        document.getElementById("welcome").classList.remove("active");
+        document.getElementById("thankyou").classList.add("active");
+    }
+</script>
+
+</body>
+</html>
